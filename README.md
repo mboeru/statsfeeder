@@ -2,7 +2,7 @@
 ###### simple python app that gets values or json from different modules and outputs them into graphite
 
 
- - you can create your own modules in any programing language. Just output to stdout either a value or a simple json. just look into stats.d
+ - you can create your own modules in any programing language. Just output to stdout either a value or a simple json. Take a look into stats.d.examples
 
  
 ### Example outputs:
@@ -36,3 +36,8 @@
 
 #### Running as a daemon
  - You can use the example supervisord script located in helpers. Just make sure to change the paths.
+ - Using screen
+  - screen -dm - S statsfeeder /root/statsfeeder/statsfeeder.py
+
+#### Dynamically adding or removing modules
+ - Every time it runs, statsfeeder checks the modules directory for new files. If there are new files with +x it will execute them. If an existing module is disabled by removing the execute attibute, that stat will no longer be collected. These things happen without the need to restart statsfeeder.
