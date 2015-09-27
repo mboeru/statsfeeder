@@ -7,7 +7,6 @@ import time
 import commands
 import json
 import socket
-import re
 import os
 import sys
 import multiprocessing as mp
