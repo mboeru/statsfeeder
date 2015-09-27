@@ -1,5 +1,5 @@
 # statsfeeder
-###### simple python app that gets values or json from different modules and outputs them into graphite
+##### simple, modular python app to send different values into Graphite
 
 
  - you can create your own modules in any programing language. Just output to stdout either a value or a simple json. Take a look into stats.d.examples
