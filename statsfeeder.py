@@ -6,6 +6,8 @@ import glob
 import time
 import commands
 import json
+import socket
+import re
 import os
 import sys
 import multiprocessing as mp
@@ -33,6 +35,11 @@ else:
 	dryrun=False
 
 def main():
+
+	# Test Graphite Connection
+	if check_server(HOST,int(PORT)) is False:
+		exit()
+
 	# Get a list of modules in the modules directory
 	enabled_stats = [w.replace(str(STATSDIR), "") for w in glob.glob(str(STATSDIR+"*"))]
 
@@ -160,6 +167,18 @@ def get_stat_info(enabled_stats):
 	statsfeeder_stats_results = [qstatsfeeder_stats.get() for p in processes]
 		
 	return (statsdata_results, statsfeeder_stats_results)
+
+def check_server(address, port):
+	# Create a TCP socket
+	s = socket.socket()
+	print "Attempting to connect to %s on port %s" % (address, port)
+	try:
+		s.connect((address, port))
+		print "Connected to %s on port %s" % (address, port)
+		return True
+	except socket.error, e:
+		print "Connection to %s on port %s failed: %s. Check graphite is running or the config has the correct values." % (address, port, e)
+		return False
 
 if __name__ == "__main__":
 	sys.exit(main())
