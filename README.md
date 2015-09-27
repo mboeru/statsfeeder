@@ -41,3 +41,6 @@
 
 #### Dynamically adding or removing modules
  - Every time it runs, statsfeeder checks the modules directory for new files. If there are new files with +x it will execute them. If an existing module is disabled by removing the execute attibute, that stat will no longer be collected. These things happen without the need to restart statsfeeder.
+
+#### Future
+ - add some builtin modules like URL fetching, weather module and others
