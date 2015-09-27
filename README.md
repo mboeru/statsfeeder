@@ -25,3 +25,6 @@
   - the name of the file is the actual graphite path where the values will be saved. If the returned value is json, it will create a structure inside the name of the file with the json keys
    - For example in graphite you will have the following entries for home.apps.sickrage: 
      - home.apps.sickrage.ep_downloaded, home.apps.sickrage.ep_snatched, home.apps.sickrage.ep_total, home.apps.sickrage.shows_active, home.apps.sickrage.shows_total
+
+### Running as a daemon
+You can use the example supervisord script located in helpers. Just make sure to change the paths.
