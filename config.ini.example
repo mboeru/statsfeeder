@@ -1,10 +1,12 @@
 [statsfeeder]
+# Graphite server host and port
 Graphite_Host=127.0.0.1
 Graphite_Port=2003
 
 #Frequency in seconds
-Frequency=10
+Frequency=60
 Stats_dir=stats.d/
 
-# Switch to PROD to actually send data to graphite. If It's set to DEV it will run in dryrun mode
-Env=DEV
+
+# Switch to DEV in order to run statsfeeder in dryrun mode
+Env=PROD

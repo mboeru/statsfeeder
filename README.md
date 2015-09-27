@@ -26,5 +26,13 @@
    - For example in graphite you will have the following entries for home.apps.sickrage: 
      - home.apps.sickrage.ep_downloaded, home.apps.sickrage.ep_snatched, home.apps.sickrage.ep_total, home.apps.sickrage.shows_active, home.apps.sickrage.shows_total
 
-### Running as a daemon
-You can use the example supervisord script located in helpers. Just make sure to change the paths.
+### Installing and Prerequisites
+ - You will need a running carbon (graphite) server to wich you will feed the data
+ - install from pip configparser and graphitesend
+ - copy stats.d.examples to stats.d
+ - copy config.ini.example to config.ini
+ - adjust values in config.ini as per your needs
+ - run ./statsfeeder.py
+
+#### Running as a daemon
+ - You can use the example supervisord script located in helpers. Just make sure to change the paths.
