@@ -13,7 +13,7 @@
 ```
 #### json
 ```shell
-[stats.d]# ./home.apps.sickrage 
+[stats.d]# ./z.apps.sickrage 
 {
     "ep_downloaded": 8888, 
     "ep_snatched": 500, 
