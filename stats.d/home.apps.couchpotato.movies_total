@@ -1,0 +1,19 @@
+#!/usr/bin/env python
+
+import urllib2
+import json
+from json import JSONDecoder
+
+#Couchpotato API Key
+APIKEY="xxxxxxxxxxxxx"
+
+URL="http://192.168.1.100:5050/api/"+APIKEY+"/movie.list"
+
+r = urllib2.Request(URL)
+data = urllib2.urlopen(r).read()
+
+jd = json.loads(data)
+
+
+
+print json.dumps(jd['total'], indent=4, sort_keys=True)

@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# For testing purposes, Outputs random number. To enable just give it exec attribute (+x)
+
+echo $RANDOM

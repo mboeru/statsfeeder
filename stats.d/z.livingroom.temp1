@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# Simple bash script to get a temp sensor reading and echo it
+
+TEMP_VALUE=`/usr/sbin/temper -c`
+echo $TEMP_VALUE
