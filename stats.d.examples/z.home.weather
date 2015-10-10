@@ -13,6 +13,10 @@ data = urllib2.urlopen(r).read()
 
 
 root = ET.fromstring(str(data))
-temp =  (int(root[2][3].text) - 32) * 5.0/9.0
+for el in root:
+        if el.tag == "cc":
+                for subel in el:
+                        if subel.tag == "tmp":
+                                temp = (int(subel.text) - 32) * 5.0/9.0
 
 print round(temp, 2)
