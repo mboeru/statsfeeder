@@ -36,8 +36,9 @@ else:
 def main():
 
 	# Test Graphite Connection
-	if check_server(HOST,int(PORT)) is False:
-		exit()
+	while check_server(HOST,int(PORT)) is False:
+		print "Error connecting to " + HOST + " on port " + PORT
+		time.sleep(3)
 
 	# Get a list of modules in the modules directory
 	enabled_stats = [w.replace(str(STATSDIR), "") for w in glob.glob(str(STATSDIR+"*"))]
