@@ -45,6 +45,15 @@
 docker run -v ~/statsfeeder-config:/config mboeru/statsfeeder
 ```
  - First run will automatically the exmaple config and stats.d dir. You will need to change them and restart the container.
+ - You can also override config variables with env variables, for example add the docker run command -e "GRAPHITE_HOST=192.168.1.10"
+ - Other Variables:
+```
+GRAPHITE_HOST
+GRAPHITE_PORT
+FREQ
+STATSDIR
+ENV
+```
 
 #### Dynamically adding or removing modules
  - Every time it runs, statsfeeder checks the modules directory for new files. If there are new files with +x it will execute them. If an existing module is disabled by removing the execute attibute, that stat will no longer be collected. These things happen without the need to restart statsfeeder.
