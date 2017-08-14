@@ -10,14 +10,32 @@ import socket
 import os
 import sys
 import multiprocessing as mp
+from optparse import OptionParser
 
 verbose=True
 values_to_log=False
 
+parser = OptionParser()
+
+parser.add_option("-c", "--config", dest="configpath",
+		help="Path to config file", metavar="FILE")
+
+(options, args) = parser.parse_args()
+
+if options.configpath:
+	suff="/"
+	if not options.configpath.endswith(suff):
+		options.configpath=options.configpath+"/"
+
+	print "configpath is " + options.configpath
+else: 
+	options.configpath=""
+	
+
 
 # Read config values from config.ini. Might switch to yml config
 config = configparser.ConfigParser()
-config.read_file(open('config.ini'))
+config.read_file(open(options.configpath + 'config.ini'))
 HOST = config['statsfeeder']['Graphite_Host']
 PORT = config['statsfeeder']['Graphite_Port']
 FREQ = config['statsfeeder']['Frequency']
