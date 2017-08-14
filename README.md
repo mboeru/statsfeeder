@@ -39,6 +39,13 @@
  - Using screen
   - screen -dm - S statsfeeder /root/statsfeeder/statsfeeder.py
 
+#### Running in Docker
+ - There is a docker build available. You will need to map a volume onto /config path
+```bash
+docker run -v ~/statsfeeder-config:/config mboeru/statsfeeder
+```
+ - First run will automatically the exmaple config and stats.d dir. You will need to change them and restart the container.
+
 #### Dynamically adding or removing modules
  - Every time it runs, statsfeeder checks the modules directory for new files. If there are new files with +x it will execute them. If an existing module is disabled by removing the execute attibute, that stat will no longer be collected. These things happen without the need to restart statsfeeder.
 
