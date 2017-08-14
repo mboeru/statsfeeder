@@ -5,7 +5,7 @@ Graphite_Port=2003
 
 #Frequency in seconds
 Frequency=60
-Stats_dir=stats.d/
+Stats_dir=/config/stats.d/
 
 
 # Switch to DEV in order to run statsfeeder in dryrun mode

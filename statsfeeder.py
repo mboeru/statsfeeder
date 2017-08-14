@@ -29,7 +29,6 @@ if options.configpath:
 	suff="/"
 	if not options.configpath.endswith(suff):
 		options.configpath=options.configpath+"/"
-
 	print "configpath is " + options.configpath
 else: 
 	options.configpath=""
@@ -45,11 +44,26 @@ if not os.path.isdir(options.configpath + 'stats.d'):
 # Read config values from config.ini. Might switch to yml config
 config = configparser.ConfigParser()
 config.read_file(open(options.configpath + 'config.ini'))
-HOST = config['statsfeeder']['Graphite_Host']
-PORT = config['statsfeeder']['Graphite_Port']
-FREQ = config['statsfeeder']['Frequency']
-STATSDIR = config['statsfeeder']['Stats_dir']
-ENV = config['statsfeeder']['Env']
+if not os.getenv('GRAPHITE_HOST'):
+	HOST = config['statsfeeder']['Graphite_Host']
+else:
+	HOST = os.getenv('GRAPHITE_HOST')
+if not os.getenv('GRAPHITE_PORT'):
+	PORT = config['statsfeeder']['Graphite_Port']
+else:
+	PORT = os.getenv('GRAPHITE_PORT')
+if not os.getenv('FREQ'):
+	FREQ = config['statsfeeder']['Frequency']
+else:
+	FREQ = os.getenv('FREQ')
+if not os.getenv('STATSDIR'):
+	STATSDIR = config['statsfeeder']['Stats_dir']
+else:
+	STATSDIR = os.getenv('STATSDIR')
+if not os.getenv('ENV'):
+	ENV = config['statsfeeder']['Env']
+else:
+	ENV = os.getenv('ENV')
 
 qstatsfeeder_stats = mp.Queue()
 qstatsfeeder_statsdata= mp.Queue()
