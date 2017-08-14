@@ -10,7 +10,10 @@ import socket
 import os
 import sys
 import multiprocessing as mp
+from shutil import copyfile
+from shutil import copytree
 from optparse import OptionParser
+
 
 verbose=True
 values_to_log=False
@@ -30,7 +33,13 @@ if options.configpath:
 	print "configpath is " + options.configpath
 else: 
 	options.configpath=""
-	
+
+
+if not os.path.isfile(options.configpath + 'config.ini'):
+	copyfile("config.ini.example", options.configpath + 'config.ini')
+
+if not os.path.isdir(options.configpath + 'stats.d'):
+	copytree("stats.d.examples", options.configpath + 'stats.d')
 
 
 # Read config values from config.ini. Might switch to yml config
