@@ -1,7 +1,3 @@
-# Notice:
-# When updating this file, please also update virtualization/Docker/Dockerfile.dev
-# This way, the development image and the production image are kept in sync.
-
 FROM python:2.7
 MAINTAINER Marius Boeru <mboeru@gmail.com>
 
